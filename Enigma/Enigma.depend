@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1535834939 source:c:\users\alumno-e\desktop\enigma\main.cpp
+	"Enigma.h"
+
+1535830386 source:c:\users\alumno-e\desktop\enigma\src\func.cpp
+	"Func.h"
+
+1535830386 c:\users\alumno-e\desktop\enigma\include\func.h
+	<string.h>
+	<iostream>
+
+1535834891 source:c:\users\alumno-e\desktop\enigma\src\enigma.cpp
+	"Enigma.h"
+
+1535833487 c:\users\alumno-e\desktop\enigma\include\enigma.h
+	"Func.h"
+
