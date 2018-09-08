@@ -5,7 +5,7 @@
 class Enigma
 {
     public:
-        Enigma();
+        Enigma(string);
         string Encriptado(string);
         string Desencriptado(string);
 
@@ -17,6 +17,7 @@ class Enigma
 
         int n_rotores_pe;
         string pos_inicial;
+        int tam;
 
     private:
 };
