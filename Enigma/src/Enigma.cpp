@@ -97,6 +97,12 @@ string Enigma::Desencriptado(string mensaje_encriptado)
     for(int i=0; i<mensaje_encriptado.size(); i++){
         ///int ducky_one = desplaza1+i+1;
         desplaza1 = modulo(desplaza1+1,tam);
+        if(mensaje_encriptado[i]==sk[0]){
+            mensaje_encriptado[i]=sk[1];
+        }
+        if(mensaje_encriptado[i]==sk[1]){
+            mensaje_encriptado[i]=sk[0];
+        }
         if(alfabeto[desplaza1]==alfabeto[modulo(alfabeto.find('V')+1,tam)]){
             desplaza2=modulo(desplaza2+1,tam);
         }
