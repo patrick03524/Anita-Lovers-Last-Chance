@@ -15,19 +15,21 @@
 1535833487 c:\users\alumno-e\desktop\enigma\include\enigma.h
 	"Func.h"
 
-1536388668 source:d:\programming\anita-lovers-last-chance\enigma\main.cpp
+1536991733 source:d:\programming\anita-lovers-last-chance\enigma\main.cpp
 	"Enigma.h"
 
-1536380970 d:\programming\anita-lovers-last-chance\enigma\include\enigma.h
+1536991614 d:\programming\anita-lovers-last-chance\enigma\include\enigma.h
 	"Func.h"
 
-1536358834 d:\programming\anita-lovers-last-chance\enigma\include\func.h
+1536991648 d:\programming\anita-lovers-last-chance\enigma\include\func.h
 	<string.h>
 	<iostream>
+	<time.h>
+	<stdlib.h>
 
-1536358834 source:d:\programming\anita-lovers-last-chance\enigma\src\func.cpp
+1536991763 source:d:\programming\anita-lovers-last-chance\enigma\src\func.cpp
 	"Func.h"
 
-1536389915 source:d:\programming\anita-lovers-last-chance\enigma\src\enigma.cpp
+1536991815 source:d:\programming\anita-lovers-last-chance\enigma\src\enigma.cpp
 	"Enigma.h"
 
