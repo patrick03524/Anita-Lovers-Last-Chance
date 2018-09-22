@@ -7,7 +7,7 @@ int main()
     cout <<"Según la cantidad de Rotores que actualmente hay ingrese las posiciones iniciales de los rotores"<<endl;
     cout <<"Ingrese las primeras posiciones: ";
     cin >> clave;
-    Enigma e(clave);
+    Enigma e(clave,1,2,3,"RFW","XZ");
     string m = e.Encriptado("GATOS");
     cout <<"ENCRIPTA3: "<<m<<endl;
     string d = e.Desencriptado(m);
