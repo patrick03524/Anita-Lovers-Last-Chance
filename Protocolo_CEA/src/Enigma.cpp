@@ -2,14 +2,13 @@
 
 Enigma::Enigma(string clave, int a, int b, int c)
 {
-    n_rotores_pe=3;
     pos_inicial=clave;
-    tam = alfabeto.size();
+    temp = alfabeto.size();
     r1=elegir_rotores(a);
     r2=elegir_rotores(b);
     r3=elegir_rotores(c);
-    int n_1 = generar_Aleatorio_Max(tam);
-    int n_2 = generar_Aleatorio_Max(tam);
+    int n_1 = generar_Aleatorio_Max(temp);
+    int n_2 = generar_Aleatorio_Max(temp);
     while(n_2==n_1){
         n_2 = generar_Aleatorio_Max(alfabeto.size());
     }
@@ -20,103 +19,100 @@ Enigma::Enigma(string clave, int a, int b, int c)
     l2 = limite[b-1];
     l3 = limite[c-1];
 }
-Enigma::Enigma(string clave,int a, int b, int c, string override, string n)
-{
-    n_rotores_pe=3;
-    pos_inicial=clave;
-    tam = alfabeto.size();
-    sk = n;
-    r1=elegir_rotores(a);
-    r2=elegir_rotores(b);
-    r3=elegir_rotores(c);
+Enigma::Enigma(string x,int b, int c, int d, string override, string n){
+    temp = alfabeto.length();
+    pos_inicial=x;
+    r1=elegir_rotores(b);
+    r2=elegir_rotores(c);
+    r3=elegir_rotores(d);
     l1=override[0];
     l2=override[1];
     l3=override[2];
+    sk = n;
 }
-string Enigma::Encriptado(string mensaje_original)
-{
-    string mensaje_encriptado;
-
+string Enigma::Encriptado(string mensaje_original){
+    ///int desplaza3, desplaza2, desplaza1;
     int desplaza1, desplaza2, desplaza3;
-    desplaza1 = alfabeto.find(pos_inicial[0]);
-    desplaza2 = alfabeto.find(pos_inicial[1]);
-    desplaza3 = alfabeto.find(pos_inicial[2]);
-
+    string mensaje_encriptado;
+    desplaza1=alfabeto.find(pos_inicial[0]);
+    desplaza2=alfabeto.find(pos_inicial[1]);
+    desplaza3=alfabeto.find(pos_inicial[2]);
     for(int i=0;i<mensaje_original.length();i++){
         if(mensaje_original[i]==sk[0]){
             mensaje_original[i]=sk[1];
         }
-        if(mensaje_original[i]==sk[1]){
+        else if(mensaje_original[i]==sk[1]){
             mensaje_original[i]=sk[0];
         }
-        string tmp;
-        int tmp2;
-        desplaza3=modulo(desplaza1+1,tam);
-        if(desplaza3==alfabeto.find(l3)){
-            desplaza2 = modulo(desplaza2+1,tam);
+        string temp1;
+        int temp2;
+        desplaza3=modulo(desplaza3+1,temp);
+        if(desplaza3==(alfabeto.find(l3))){
+            desplaza2++;
         }
-        if(desplaza2==modulo(alfabeto.find(l2)-1,tam)){
-            desplaza2 = modulo(desplaza2+1,tam);
-            desplaza1 = modulo(desplaza1+1,tam);
+        if(desplaza2==(alfabeto.find(l2)-1)){
+            desplaza2++;
+            desplaza1++;
         }
-        tmp=r3[modulo(alfabeto.find(mensaje_original[i])+desplaza3,tam)];
-        tmp=r2[modulo(alfabeto.find(tmp)-desplaza3+desplaza2,tam)];
-        tmp=r1[modulo(alfabeto.find(tmp)-desplaza2+desplaza1,tam)];
+        temp1=r3[modulo(alfabeto.find(mensaje_original[i])+desplaza3,temp)];
+        temp1=r2[modulo(alfabeto.find(temp1)-desplaza3+desplaza2,temp)];
+        temp1=r1[modulo (alfabeto.find(temp1)+desplaza1-desplaza2,temp)];
 
-        tmp=reflect[modulo(alfabeto.find(tmp)-desplaza1,tam)];
+        temp1=reflector[modulo(alfabeto.find(temp1)-desplaza1,temp)];
 
-        tmp2=modulo(r1.find(alfabeto[modulo(alfabeto.find(tmp)+desplaza1,tam)])-desplaza1,tam);
-        tmp2=modulo(r2.find(alfabeto[modulo(tmp2+desplaza2,tam)])-desplaza2,tam);
-        tmp=alfabeto[modulo(r3.find(alfabeto[modulo(tmp2+desplaza3,tam)])-desplaza3,tam)];
-        mensaje_encriptado+=tmp;
+        temp2=modulo(r1.find(alfabeto[modulo((alfabeto.find(temp1)+desplaza1),(temp))])-desplaza1,temp);
+        temp2=modulo(r2.find(alfabeto[modulo(temp2+desplaza2,temp)])-desplaza2,temp);
+        temp1=alfabeto[modulo(r3.find(alfabeto[modulo(temp2+desplaza3,temp)])-desplaza3,temp)];
+        mensaje_encriptado+=temp1;
         if(mensaje_encriptado[i]==sk[0]){
             mensaje_encriptado[i]=sk[1];
         }
-        if(mensaje_encriptado[i]==sk[1]){
-            mensaje_encriptado[i]=sk[1];
+        else if(mensaje_encriptado[i]==sk[1]){
+            mensaje_encriptado[i]=sk[0];
         }
     }
+    cout<<desplaza1<<" "<<desplaza2<<" "<<desplaza3<<" "<<endl;
     return mensaje_encriptado;
+
 }
-string Enigma::Desencriptado(string mensaje_encriptado)
-{
+string Enigma::Desencriptado(string mensaje_encriptado){
+    int desplaza3, desplaza2, desplaza1;
     string mensaje_desencriptado;
-    int desplaza1, desplaza2, desplaza3;
-    desplaza1 = alfabeto.find(pos_inicial[0]);
-    desplaza2 = alfabeto.find(pos_inicial[1]);
-    desplaza3 = alfabeto.find(pos_inicial[2]);
+    desplaza1=alfabeto.find(pos_inicial[0]);
+    desplaza2=alfabeto.find(pos_inicial[1]);
+    desplaza3=alfabeto.find(pos_inicial[2]);
     for(int i=0;i<mensaje_encriptado.length();i++){
         if(mensaje_encriptado[i]==sk[0]){
             mensaje_encriptado[i]=sk[1];
         }
-        if(mensaje_encriptado[i]==sk[1]){
+        else if(mensaje_encriptado[i]==sk[1]){
             mensaje_encriptado[i]=sk[0];
         }
-        string tmp;
-        int tmp2;
-        desplaza3=modulo(desplaza1+1,tam);
-        if(desplaza3==alfabeto.find(l3)){
-            desplaza2 = modulo(desplaza2+1,tam);
+        string temp1;
+        int temp2;
+        desplaza3=modulo(desplaza3+1,temp);
+        if(desplaza3==(alfabeto.find(l3))){
+            desplaza2++;
         }
-        if(desplaza2==modulo(alfabeto.find(l2)-1,tam)){
-            desplaza2 = modulo(desplaza2+1,tam);
-            desplaza1 = modulo(desplaza1+1,tam);
+        if(desplaza2==(alfabeto.find(l2)-1)){
+            desplaza2++;
+            desplaza1++;
         }
-        tmp=r3[modulo(alfabeto.find(mensaje_encriptado[i])+desplaza3,tam)];
-        tmp=r2[modulo(alfabeto.find(tmp)-desplaza3+desplaza2,tam)];
-        tmp=r1[modulo(alfabeto.find(tmp)-desplaza2+desplaza1,tam)];
+        temp1=r3[modulo(alfabeto.find(mensaje_encriptado[i])+desplaza3,temp)];
+        temp1=r2[modulo(alfabeto.find(temp1)-desplaza3+desplaza2,temp)];
+        temp1=r1[modulo (alfabeto.find(temp1)+desplaza1-desplaza2,temp)];
 
-        tmp=reflect[modulo(alfabeto.find(tmp)-desplaza1,tam)];
+        temp1=reflector[modulo(alfabeto.find(temp1)-desplaza1,temp)];
 
-        tmp2=modulo(r1.find(alfabeto[modulo(alfabeto.find(tmp)+desplaza1,tam)])-desplaza1,tam);
-        tmp2=modulo(r2.find(alfabeto[modulo(tmp2+desplaza2,tam)])-desplaza2,tam);
-        tmp=alfabeto[modulo(r3.find(alfabeto[modulo(tmp2+desplaza3,tam)])-desplaza3,tam)];
-        mensaje_desencriptado+=tmp;
+        temp2=modulo(r1.find(alfabeto[modulo((alfabeto.find(temp1)+desplaza1),(temp))])-desplaza1,temp);
+        temp2=modulo(r2.find(alfabeto[modulo(temp2+desplaza2,temp)])-desplaza2,temp);
+        temp1=alfabeto[modulo(r3.find(alfabeto[modulo(temp2+desplaza3,temp)])-desplaza3,temp)];
+        mensaje_desencriptado+=temp1;
         if(mensaje_desencriptado[i]==sk[0]){
             mensaje_desencriptado[i]=sk[1];
         }
-        if(mensaje_desencriptado[i]==sk[1]){
-            mensaje_desencriptado[i]=sk[1];
+        else if(mensaje_desencriptado[i]==sk[1]){
+            mensaje_desencriptado[i]=sk[0];
         }
     }
     return mensaje_desencriptado;

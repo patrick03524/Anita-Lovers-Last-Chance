@@ -7,8 +7,9 @@ int main()
     /*culo.leer_txt();
     culo.escribir_txt("TE ESTOY LLAMANDO PARA EXPLOTAR CONTIGO");
     culo.leer_txt();*/
-    Enigma e("NEL",1,2,3,"RFW","GH");
-    cout <<e.Encriptado("GATOS")<<endl;
+    Enigma e("ABC",1,2,3,"RFW","GH");
+    string wea = e.Desencriptado("RXATTSFKVJANRFYNUEIFNOBFYSPVAQACJSF");
+    cout <<wea<<endl;
 
 
 
