@@ -71,9 +71,9 @@ int generar_Aleatorio_Max(int max){
 }
 void generar_claves_affin(int &a,int &b, int mod)
 {
-    a = generar_Aleatorio_Max(mod-1);
+    a = generar_Aleatorio_Max(100-1);
     while(euclides(a,mod)!=1){
-        a=generar_Aleatorio();
+        a=generar_Aleatorio_Max(100-1);
     }
     b=generar_Aleatorio_Max(mod-1);
 }

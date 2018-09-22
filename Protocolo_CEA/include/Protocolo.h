@@ -16,7 +16,7 @@ class Protocolo
         string leer_txt();
         void escribir_txt(string);
         string Encriptado(string);
-        string Desencriptado(string);
+        string Desencriptado();
 
         int tam;
         string e1;

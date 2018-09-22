@@ -66,12 +66,30 @@ string Protocolo::Encriptado(string mensaje_original)
     clave_affin_b = affin.get_clave_b();
     affin_temp1 = affin.Affin_Encriptacion(enigma_temp1);
 
+    stringstream a1,a2,c1;
+    a1 << clave_affin_a;
+    a2 << clave_affin_b;
+    c1 << alea_cesar;
 
+    mensaje_encriptado+=a1.str();
+    mensaje_encriptado+=a2.str();
+    mensaje_encriptado+='\n';
+    mensaje_encriptado+=e1;
+    mensaje_encriptado+=e2;
+    mensaje_encriptado+=e3;
+    mensaje_encriptado+=e4;
+    mensaje_encriptado+='\n';
+    mensaje_encriptado+=c1.str();
+    mensaje_encriptado+='\n';
+    mensaje_encriptado+=affin_temp1;
+
+    escribir_txt(mensaje_encriptado);
 
     return mensaje_encriptado;
 }
-string Protocolo::Desencriptado(string mensaje_Encriptado)
+string Protocolo::Desencriptado()
 {
+    string mensaje_Desencriptado;
     string exit,s;
     ifstream infile;
 	infile.open ("Fichero_Salida.txt");
@@ -94,7 +112,35 @@ string Protocolo::Desencriptado(string mensaje_Encriptado)
 	string mensaje;
 	mensaje = exit.substr(17,100);
 	cout <<mensaje<<endl;
-	cout <<mensaje.size()<<endl;
+	stringstream a1(affin.substr(0,2));
+	stringstream a2(affin.substr(2,4));
+    int clave_affin_a = 0;
+    int clave_affin_b = 0;
+    a1>>clave_affin_a;
+    a2>>clave_affin_b;
 
-    return "ELLA";
+	Affin Pato1(clave_affin_a,clave_affin_b);
+	string tmp1 = Pato1.Affin_Desencriptacion(mensaje);
+
+	stringstream b1(enigma.substr(0,1));
+	stringstream b2(enigma.substr(1,1));
+	stringstream b3(enigma.substr(2,1));
+	int rotores1 = 0;
+	int rotores2 = 0;
+	int rotores3 = 0;
+	b1>>rotores1;
+	b2>>rotores2;
+	b3>>rotores3;
+	Enigma Pato2(enigma.substr(3,3),rotores1,rotores2,rotores3,enigma.substr(6,3),enigma.substr(9,2));
+	string tmp2 = Pato2.Desencriptado(tmp1);
+
+	stringstream c1(cesar.substr(0,2));
+	int clave_cesar_a = 0;
+	c1>>clave_cesar_a;
+	Cesar Pato3(clave_cesar_a);
+	string tmp3 = Pato3.Desencriptado(tmp2);
+
+	mensaje_Desencriptado+=tmp3;
+
+    return mensaje_Desencriptado;
 }
