@@ -14,6 +14,7 @@ class RSA_BLOCKS
         ///void menu();
         string rellenado_0(int);
         string rellenado_aux(ZZ,ZZ);
+        string rellenado_aux_esp(ZZ,ZZ);
     private:
         string alfabeto = "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         ZZ p;

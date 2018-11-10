@@ -44,6 +44,8 @@ int main()
     cout <<"Eligio la opcion 4"<<endl;
     cout <<"Ta luegorl"<<endl;*/
     RSA_BLOCKS cuack(8,ZZ(3),ZZ(1003));
-    cuack.Encriptado("come here");
+    string damn = cuack.Encriptado("come here");
+    string damn2 = cuack.Desencriptado(damn);
+    cout <<"DES"<<damn2<<endl;
     return 0;
 }

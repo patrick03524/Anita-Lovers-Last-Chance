@@ -78,6 +78,15 @@ string  RSA_BLOCKS::rellenado_aux(ZZ a, ZZ n_1)
     }
     return llenar;
 }
+string RSA_BLOCKS::rellenado_aux_esp(ZZ a,ZZ n_1)
+{
+    string llenar = zz_To_String(a);
+    string treat_fill = zz_To_String(n_1);
+    while(llenar.size()<treat_fill.size()-1){
+        llenar = '0' + llenar;       ///llenado al principio
+    }
+    return llenar;
+}
 string RSA_BLOCKS::Encriptado(string mensaje_original)
 {
     string mensaje_encriptado;
@@ -125,7 +134,7 @@ string RSA_BLOCKS::Encriptado(string mensaje_original)
     }
     cout<<temp3<<endl;
     ///FIRMA DIGITAL
-    for(unsigned int i = 0; i<mensaje_2_paso;i++){
+    for(unsigned int i = 0; i<mensaje_2_paso.size();i++){
         temp4+=mensaje_2_paso[i];
         if(temp4.size()==bloques2){
             ZZ pos = exponenciacion_modular(string_To_ZZ(temp4),e_pub,n_pub);
@@ -142,5 +151,59 @@ string RSA_BLOCKS::Encriptado(string mensaje_original)
 string RSA_BLOCKS::Desencriptado(string mensaje_encriptado)
 {
     string mensaje_desencriptado;
+    string mensaje_1_paso;
+    vector<string> bloques;
+    string bleach1 = zz_To_String(n);
+    string bleach2 = zz_To_String(n_pub);
+    int bloques1 = bleach1.size();
+    int bloques2 = bleach2.size();
+
+    string temp1,temp2,temp3,temp4,temp5,temp6;
+    int treat_num = zz_To_String(n).size()-1;
+    for(unsigned int i=0; i<mensaje_encriptado.size();i++){
+        temp1+=mensaje_encriptado[i];
+        if(temp1.size()==bloques1){
+            bloques.push_back(temp1);
+            cout<<"B"<<i/5+1<<": "<<temp1<<endl;
+            temp1 = "";
+        }
+    }
+    cout <<temp1<<endl;
+    for(unsigned int i=0; i<bloques.size(); i++){
+        ZZ pos = Resto_Chino(string_To_ZZ(bloques[i]));
+        temp2 += rellenado_aux_esp(pos,n);
+    }
+    ///FIRMA
+    for(unsigned int i=0; i<temp2.size();i++){
+        temp3+=temp2[i];
+        if(temp3.size()==bloques2){
+            ZZ pos = exponenciacion_modular(string_To_ZZ(temp3),e_pub,n_pub);
+            temp4+=rellenado_aux(pos,n_pub);
+        }
+        if(i==temp2.size()-1){
+            ZZ pos = exponenciacion_modular(string_To_ZZ(temp3),e_pub,n_pub);
+            temp4+=rellenado_aux(pos,n_pub);
+        }
+    }
+    ///RÚBRICA
+    for(unsigned int i=0; i<temp4.size();i++){
+        temp5+=temp4[i];
+        if(temp5.size()==bloques2){
+            ZZ pos = exponenciacion_modular(string_To_ZZ(temp5),d,n);
+            temp6+=rellenado_aux(pos,n);
+        }
+        if(i==temp4.size()-1){
+            ZZ pos = exponenciacion_modular(string_To_ZZ(temp3),d,n);
+            temp6+=rellenado_aux(pos,n);
+        }
+    }
+    for(unsigned int i=0;i<temp6.size();i++){
+        mensaje_1_paso+=temp6[i];
+        string lim = int_to_string(alfabeto.size());
+        if(mensaje_1_paso.size()==lim.size()){
+            mensaje_desencriptado+=alfabeto[string_to_int(mensaje_1_paso)];
+            mensaje_1_paso="";
+        }
+    }
     return mensaje_desencriptado;
 }

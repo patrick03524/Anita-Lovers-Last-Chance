@@ -21,3 +21,25 @@
 1540656510 source:d:\programming\c++\rsa_bloques\src\rsa_blocks.cpp
 	"RSA_BLOCKS.h"
 
+1541227577 source:d:\programming\anita-lovers-last-chance\rsa_bloques\main.cpp
+	"RSA_BLOCKS.h"
+
+1541227514 d:\programming\anita-lovers-last-chance\rsa_bloques\include\rsa_blocks.h
+	"Func.h"
+
+1540616563 d:\programming\anita-lovers-last-chance\rsa_bloques\include\func.h
+	<iostream>
+	<string.h>
+	<time.h>
+	<stdlib.h>
+	<vector>
+	<fstream>
+	<sstream>
+	<NTL/ZZ.h>
+
+1540616574 source:d:\programming\anita-lovers-last-chance\rsa_bloques\src\func.cpp
+	"Func.h"
+
+1541227545 source:d:\programming\anita-lovers-last-chance\rsa_bloques\src\rsa_blocks.cpp
+	"RSA_BLOCKS.h"
+
