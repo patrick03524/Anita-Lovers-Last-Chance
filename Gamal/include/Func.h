@@ -43,3 +43,4 @@ ZZ generar_Aleatorio_bits(int);
 ZZ Find_Gen(ZZ);
 
 #endif // FUNC_H
+

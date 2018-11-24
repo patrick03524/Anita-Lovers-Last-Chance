@@ -50,9 +50,12 @@ int main()
     cin >> c;
 
     Gamal Prueba(stringTozz(a), stringTozz(b), stringTozz(c));*/
-    Gamal Animal(ZZ(2),ZZ(7),ZZ(29),ZZ(12),ZZ(5));
-    string mensaje="ILIKEMATH";
-    cout<<Animal.Encriptado(mensaje)<<endl;
+    ///Gamal Tamal(ZZ(2),ZZ(7),ZZ(29),ZZ(12),ZZ(5));
+    Gamal Tamal(1024);
+    string mensaje="SEVEQUENOTENGOCEREBRONIANSIASPORVIVIRUNDIAMASPEROTENDREUNAGRANRECOMPENSAVENGANYAPODEROSOHERPULEOLAESPERANZADEHACERLOMEJOR";
+    cout<<Tamal.Encriptado(mensaje)<<endl;
+    string Cuack = Tamal.Encriptado(mensaje);
+    cout << Tamal.Desencriptado(Cuack)<<endl;
     return 0;
 
 }

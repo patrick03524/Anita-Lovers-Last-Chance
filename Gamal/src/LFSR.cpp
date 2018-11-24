@@ -30,7 +30,7 @@ void LFSR::fill_seed()
             our_seed[time_lap_ass] = 0;
             cont_0++;
             cont_1--;
-            cout<<"AGREGE 0 PES"<<endl;
+            ///cout<<"AGREGE 0 PES"<<endl;
         }
         else{
         ///Esto quiere decir que hay más 0's que 1's
@@ -41,7 +41,7 @@ void LFSR::fill_seed()
             our_seed[time_lap_ass2] = 1;
             cont_1++;
             cont_0--;
-            cout<<"AGREGE 1 PES"<<endl;
+            ///cout<<"AGREGE 1 PES"<<endl;
         }
     }
     for(unsigned int i = 0; i<our_seed.size();i++){

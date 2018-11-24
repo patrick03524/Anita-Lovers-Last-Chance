@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -26,18 +27,11 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="sfml-graphics" />
-					<Add library="sfml-audio" />
-					<Add library="sfml-network" />
-					<Add library="sfml-window" />
-					<Add library="sfml-system" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-std=c++11" />
-			<Add option="-std=c++14" />
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Func.h" />
@@ -45,16 +39,6 @@
 		<Unit filename="include/LFSR.h" />
 		<Unit filename="include/RC4.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="sfml-audio-2.dll" />
-		<Unit filename="sfml-audio-d-2.dll" />
-		<Unit filename="sfml-graphics-2.dll" />
-		<Unit filename="sfml-graphics-d-2.dll" />
-		<Unit filename="sfml-network-2.dll" />
-		<Unit filename="sfml-network-d-2.dll" />
-		<Unit filename="sfml-system-2.dll" />
-		<Unit filename="sfml-system-d-2.dll" />
-		<Unit filename="sfml-window-2.dll" />
-		<Unit filename="sfml-window-d-2.dll" />
 		<Unit filename="src/Func.cpp" />
 		<Unit filename="src/Gamal.cpp" />
 		<Unit filename="src/LFSR.cpp" />

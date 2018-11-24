@@ -35,7 +35,7 @@ vector<int> RC4::Generar_Aleatorio(int n_bits){
     int K[n_bits],S[n_bits];
     /*Image img;
     if(img.loadFromFile("image.jpg")) {
-        //cout << "Image is loaded"
+        //cout << "Image is loaded" ///Cargado de imagen
     } else {
         cout << "couldn't load image";
     }
@@ -44,14 +44,14 @@ vector<int> RC4::Generar_Aleatorio(int n_bits){
     int ySize = imageSize.y;
     Color tempColor;
     int red,green,blue;
-    vector<int> cuack;
+    vector<int> cuack;                      ///Procesamiento de la imagen
     for(int i1 = 0; i1 < ySize ; i1++) {
         for(int j = 0; j < xSize; j++) {
             tempColor = img.getPixel(j, i1);
             red = tempColor.r;
             green = tempColor.g;
             blue = tempColor.b;
-            cuack.push_back(green);
+            cuack.push_back(green);          ///Rescata el valor green de cada pixel y lo almacena
         }
         /// cout<<"RED: "<<red<<" GREEN: "<<green<<" BLUE: "<<blue<<endl;
     }
@@ -75,7 +75,7 @@ vector<int> RC4::Generar_Aleatorio(int n_bits){
         swap_int(S[i],S[f]);
         index=modulo_int(S[i]+S[f],n_bits);
     }
-    cout<<"INDEX: ";
+    ///cout<<"INDEX: ";
     for(int m=0;m<8;m++){
         total.push_back(index[m]);
         cout<<total[m]<<" ";
@@ -83,32 +83,3 @@ vector<int> RC4::Generar_Aleatorio(int n_bits){
     cout<<endl;
     return total;
 }
-/*
-vector<int> RC_4::Generar_Aleatorio(int n_bits){
-    vector<int> total;
-    int K[n_bits],S[n_bits];
-    for(int i=0;i<n_bits;i++){
-        S[i]=i;
-    }
-    int f=0;
-    for(int i=0;i<n_bits;i++){
-        f=modulo_int(f+S[i]+K[i],n_bits);
-        swap_int(S[i],K[i]);
-    }
-    int i=0;
-    int const numero_de_bits_necesarios=8;
-    bitset<numero_de_bits_necesarios> index;
-    for(int n=0;n<n_bits;n++){
-        i=modulo_int(i+1,n_bits);
-        f=modulo_int(f+S[n],n_bits);
-        swap_int(S[i],S[f]);
-        index=modulo_int(S[i]+S[f],n_bits);
-    }
-    cout<<"INDEX: ";
-    for(int m=0;m<8;m++){
-        total.push_back(index[m]);
-        cout<<total[m]<<" ";
-    }
-    cout<<endl;
-    return total;
-}*/
