@@ -7,6 +7,8 @@ RSA_BLOCKS::RSA_BLOCKS(int bits)
     generar_claves(bits);
     e_pub=e;
     n_pub=n;
+    cout<<"E_DEL_MEN: "<<e_pub<<endl;
+    cout<<"N_DEL_MEN: "<<n_pub<<endl;
 }
 RSA_BLOCKS::RSA_BLOCKS(int bits, ZZ e2, ZZ n2)
 {
@@ -20,10 +22,19 @@ RSA_BLOCKS::RSA_BLOCKS(ZZ p_1,ZZ q_1,ZZ e_1,ZZ d_1,ZZ e_2,ZZ n_2)
     q = q_1;
     e = e_1;
     d = d_1;
-    n = p * q;
-    phi = (p-1)*(q-1);
+    n = p_1 * q_1;
+    phi = (p-ZZ(1))*(q-ZZ(1));
+    ///cout<<"PHI_: "<<phi<<endl;
     e_pub = e_2;
     n_pub = n_2;
+    cout<<"P:"<<p<<endl;
+    cout<<"Q:"<<q<<endl;
+    cout<<"N: "<<n<<endl;
+    cout<<"PHI: "<<phi<<endl;
+    cout <<"E:"<<e<<endl;
+    cout <<"D:"<<d<<endl;
+    cout<<"E_DEL_MEN: "<<e_pub<<endl;
+    cout<<"N_DEL_MEN: "<<n_pub<<endl;
 }
 void RSA_BLOCKS::generar_claves(int bits)
 {
@@ -34,26 +45,26 @@ void RSA_BLOCKS::generar_claves(int bits)
         p=generar_Aleatorio(bits);
         ///cout<<"NEL"<<endl;
     }
-    ///cout<<"P:"<<p<<endl;
+    cout<<"P:"<<p<<endl;
     q=generar_Aleatorio_bits(bits);
      while(!ProbPrime(q) || q<min){
         q=generar_Aleatorio(bits);
         ///cout<<"NEL"<<endl;
     }
-    ///cout<<"Q:"<<q<<endl;
+    cout<<"Q:"<<q<<endl;
     n=p*q;
-    ///cout<<"N: "<<n<<endl;
+    cout<<"N: "<<n<<endl;
     phi=phi_euler(p,q);
-    ///cout<<"PHI: "<<phi<<endl;
+    cout<<"PHI: "<<phi<<endl;
     e=generar_Aleatorio_Max(phi);
     while(euclides(e,phi)!=1){
         e=generar_Aleatorio_Max(phi);
     }
-    ///cout <<"E:"<<e<<endl;
+    cout <<"E:"<<e<<endl;
     tam=alfabeto.length();
     ///cout<<"TAM: "<<tam<<endl;
     d=inversa(e,phi);
-    ///cout <<"D:"<<d<<endl;
+    cout <<"D:"<<d<<endl;
 
 }
 ZZ RSA_BLOCKS::Resto_Chino(ZZ num){     ///algoritmo exponenciación rápida binaria – Teorema Chino del Resto
@@ -138,11 +149,13 @@ string RSA_BLOCKS::Encriptado(string mensaje_original)
             for(unsigned int j = temp3.size(); j<bloques1-1;j++){
                 temp3+=zz_To_String(ZZ(alfabeto.find('W')));
                 k1.push_back(temp3.substr(0,bloques1-1));
+                cout<<"B_AD: "<<temp3.substr(0,bloques1-1)<<endl;
+                temp3="";
             }
         }
         if(temp3.size()==bloques1-1){
             k1.push_back(temp3);
-            ///cout<<"B"<<i/5+1<<": "<<temp3<<endl;
+            cout<<"B"<<i/5+1<<": "<<temp3<<endl;
             temp3="";
         }
     }
@@ -150,18 +163,20 @@ string RSA_BLOCKS::Encriptado(string mensaje_original)
         ZZ pos = exponenciacion_modular(string_To_ZZ(k1[i]),d,n);
         mensaje_2_paso+=rellenado_aux(pos,n);
     }
-    ///cout<<"R: "<<mensaje_2_paso<<endl;
+    cout<<"R: "<<mensaje_2_paso<<endl;
     for(unsigned int i = 0; i<mensaje_2_paso.size(); i++){
         temp4+=mensaje_2_paso[i];
         if(i==mensaje_2_paso.size()-1){
             for(unsigned int j = temp4.size(); j<bloques2-1;j++){
                 temp4+=zz_To_String(ZZ(alfabeto.find('W')));
                 k2.push_back(temp4.substr(0,bloques2-1));
+                cout<<"B_AD: "<<temp4.substr(0,bloques2-1)<<endl;
+                temp4="";
             }
         }
         if(temp4.size()==bloques2-1){
             k2.push_back(temp4);
-            ///cout<<"B"<<i/5+1<<": "<<temp4<<endl;
+            cout<<"B"<<i/5+1<<": "<<temp4<<endl;
             temp4="";
         }
     }
@@ -169,7 +184,7 @@ string RSA_BLOCKS::Encriptado(string mensaje_original)
         ZZ pos = exponenciacion_modular(string_To_ZZ(k2[i]),e_pub,n_pub);
         mensaje_3_paso+=rellenado_aux(pos,n_pub);
     }
-    ///cout<<"F: "<<mensaje_3_paso<<endl;
+    cout<<"F: "<<mensaje_3_paso<<endl;
     /*///RÚBRICA
     for(unsigned int i = 0; i<mensaje_1_paso.size(); i++){
         temp3+=mensaje_1_paso[i];
@@ -223,7 +238,7 @@ string RSA_BLOCKS::Desencriptado(string mensaje_encriptado)
         }
         if(temp1.size()==bloques1){
             k2.push_back(temp1);
-            ///cout<<"B"<<i/5+1<<": "<<temp1<<endl;
+            cout<<"B"<<i/5+1<<": "<<temp1<<endl;
             temp1 = "";
         }
     }
@@ -232,18 +247,20 @@ string RSA_BLOCKS::Desencriptado(string mensaje_encriptado)
         ///mensaje_1_paso+= rellenado_aux(pos,n);
         mensaje_1_paso+= rellenado_aux_esp(pos,n);
     }
-    ///cout<<"R-1: "<<mensaje_1_paso<<endl;
+    cout<<"R-1: "<<mensaje_1_paso<<endl;
         for(unsigned int i = 0; i<mensaje_1_paso.size(); i++){
         temp2+=mensaje_1_paso[i];
         if(i==(mensaje_1_paso.size()-1)){
             for(unsigned int j = temp2.size(); j<bloques2-1;j++){
                 temp2+=zz_To_String(ZZ(alfabeto.find('W')));
                 k1.push_back(temp2.substr(0,bloques2));
+                cout<<"B_AD: "<<temp2.substr(0,bloques2)<<endl;
+                temp2="";
             }
         }
         if(temp2.size()==bloques2){
             k1.push_back(temp2);
-            ///cout<<"B"<<i/5+1<<": "<<temp2<<endl;
+            cout<<"B"<<i/5+1<<": "<<temp2<<endl;
             temp2="";
         }
     }
@@ -252,18 +269,20 @@ string RSA_BLOCKS::Desencriptado(string mensaje_encriptado)
         ///mensaje_2_paso+=rellenado_aux(pos,n_pub);
         mensaje_2_paso+=rellenado_aux_esp(pos,n_pub);
     }
-    ///cout<<"F-1: "<<mensaje_2_paso<<endl;
+    cout<<"F-1: "<<mensaje_2_paso<<endl;
     for(unsigned int i = 0; i<mensaje_2_paso.size();i++){
         temp3+=mensaje_2_paso[i];
         if(i==mensaje_2_paso.size()-1){
             for(unsigned int j = temp3.size(); j<bloques1-1;j++){
                 temp3+=zz_To_String(ZZ(alfabeto.find('W')));
                 bloques.push_back(temp3.substr(0,bloques1));
+                cout<<"B_AD: "<<temp3.substr(0,bloques1)<<endl;
+                temp3="";
             }
         }
         if(temp3.size()==bloques1){
             bloques.push_back(temp3);
-            ///cout<<"B"<<i/5+1<<": "<<temp3<<endl;
+            cout<<"B"<<i/5+1<<": "<<temp3<<endl;
             temp3 = "";
         }
     }

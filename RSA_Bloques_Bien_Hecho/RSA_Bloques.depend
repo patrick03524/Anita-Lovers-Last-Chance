@@ -109,3 +109,25 @@
 1541833394 source:d:\programming\nueva carpeta\rsa_bloques_bien_hecho\src\rsa_blocks.cpp
 	"RSA_BLOCKS.h"
 
+1543027631 source:d:\programming\anita-lovers-last-chance\rsa_bloques_bien_hecho\main.cpp
+	"RSA_BLOCKS.h"
+
+1541832264 d:\programming\anita-lovers-last-chance\rsa_bloques_bien_hecho\include\rsa_blocks.h
+	"Func.h"
+
+1541281807 d:\programming\anita-lovers-last-chance\rsa_bloques_bien_hecho\include\func.h
+	<iostream>
+	<string.h>
+	<time.h>
+	<stdlib.h>
+	<vector>
+	<fstream>
+	<sstream>
+	<NTL/ZZ.h>
+
+1541832511 source:d:\programming\anita-lovers-last-chance\rsa_bloques_bien_hecho\src\func.cpp
+	"Func.h"
+
+1543027817 source:d:\programming\anita-lovers-last-chance\rsa_bloques_bien_hecho\src\rsa_blocks.cpp
+	"RSA_BLOCKS.h"
+
