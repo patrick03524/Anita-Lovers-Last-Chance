@@ -423,3 +423,73 @@
 1543043000 source:d:\programming\c++\gamal\src\rc4.cpp
 	"RC4.h"
 
+1543069586 source:c:\users\alumno-e\downloads\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\main.cpp
+	"Gamal.h"
+
+1543069586 c:\users\alumno-e\downloads\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\include\gamal.h
+	"LFSR.h"
+
+1543069586 c:\users\alumno-e\downloads\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\include\lfsr.h
+	"RC4.h"
+
+1543069586 c:\users\alumno-e\downloads\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\include\rc4.h
+	"Func.h"
+
+1543086261 c:\users\alumno-e\downloads\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\include\func.h
+	<bitset>
+	<iostream>
+	<string.h>
+	<time.h>
+	<stdlib.h>
+	<vector>
+	<fstream>
+	<sstream>
+	<NTL/ZZ.h>
+
+1543069586 source:c:\users\alumno-e\downloads\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\src\func.cpp
+	"Func.h"
+
+1543069586 source:c:\users\alumno-e\downloads\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\src\gamal.cpp
+	"Gamal.h"
+
+1543069586 source:c:\users\alumno-e\downloads\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\src\lfsr.cpp
+	"LFSR.h"
+
+1543069586 source:c:\users\alumno-e\downloads\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\src\rc4.cpp
+	"RC4.h"
+
+1543069586 source:d:\little ais\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\main.cpp
+	"Gamal.h"
+
+1543069586 d:\little ais\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\include\gamal.h
+	"LFSR.h"
+
+1543069586 d:\little ais\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\include\lfsr.h
+	"RC4.h"
+
+1543069586 d:\little ais\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\include\rc4.h
+	"Func.h"
+
+1543086261 d:\little ais\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\include\func.h
+	<bitset>
+	<iostream>
+	<string.h>
+	<time.h>
+	<stdlib.h>
+	<vector>
+	<fstream>
+	<sstream>
+	<NTL/ZZ.h>
+
+1543069586 source:d:\little ais\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\src\func.cpp
+	"Func.h"
+
+1543069586 source:d:\little ais\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\src\gamal.cpp
+	"Gamal.h"
+
+1543069586 source:d:\little ais\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\src\lfsr.cpp
+	"LFSR.h"
+
+1543069586 source:d:\little ais\anita-lovers-last-chance-master\anita-lovers-last-chance-master\gamal\src\rc4.cpp
+	"RC4.h"
+

@@ -2,7 +2,7 @@
 #define FUNC_H
 
 #include <bitset>
-#include <SFML/Graphics.hpp>
+///#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string.h>
 #include <time.h>
@@ -14,7 +14,7 @@
 
 using namespace std;
 using namespace NTL;
-using namespace sf;
+///using namespace sf;
 
 
 ZZ modulo(ZZ,ZZ);

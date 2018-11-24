@@ -33,7 +33,7 @@ vector<int> RC4::Numero_Grande(){
 vector<int> RC4::Generar_Aleatorio(int n_bits){
     vector<int> total;
     int K[n_bits],S[n_bits];
-    Image img;
+    /*Image img;
     if(img.loadFromFile("image.jpg")) {
         //cout << "Image is loaded"
     } else {
@@ -57,6 +57,9 @@ vector<int> RC4::Generar_Aleatorio(int n_bits){
     }
     for(int i=0;i<n_bits;i++){
         S[i]=cuack[i];
+    }*/
+    for(int i=0;i<n_bits;i++){
+        S[i]=i;
     }
     int f=0;
     for(int i=0;i<n_bits;i++){
